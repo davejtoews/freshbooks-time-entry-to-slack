@@ -1,0 +1,6 @@
+{
+    "require": {
+        "rtconner/freshbooks-api": "dev-master",
+        "hassankhan/config": "^0.10.0"
+    }
+}

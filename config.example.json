@@ -1,0 +1,9 @@
+{
+	"freshbooks": {
+		"domain": "example", // example.freshbooks.com 
+		"token": "abc123", // Get this in Freshbooks under My Account
+		"client_id": 12345, // Get this by setting list_clients to true and browsing to clients.php
+		"list_clients": false, // Set to true to allow listing of clients
+		"post_log" : false // Set to true to log posts from the API
+	}
+}
