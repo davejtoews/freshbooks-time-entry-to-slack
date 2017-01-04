@@ -14,12 +14,9 @@ class FreshbooksEvent {
 	public $service;
 
 
-	public function __construct() {
+	public function __construct($name, $object_id) {
 		$this->conf = new Config('config.json');
 		$this->fb = new \Freshbooks\FreshBooksApi($this->conf->get('freshbooks.domain'), $this->conf->get('freshbooks.token'));
-	}
-
-	public function handle($name, $object_id) {
 
 		$name_split = explode('.', $name);
 		$service_string = $name_split[0];
@@ -34,6 +31,12 @@ class FreshbooksEvent {
 				return;
 		}
 
+	}
+
+	public function getSlackString() {
+		$output = $this->action . " " . $this->service_type . " ";
+		$output .= $this->service->getSlackString();
+		return $output; 
 	}
 
 	private function getTimeEntry($object_id) {
@@ -55,10 +58,7 @@ class FreshbooksEvent {
 			$project = $this->getProject($time_entry->project_id);
 			$time_entry->setProject($project);
 			return $time_entry;
-			//if ($this->isClientProject($time_entry['project_id'])) {
-			//	$foo = 
-			//	//postToSlack(print_r($time_entry, true));
-			//}
+
 		} else {
 	 		echo $fb->getError();
 		    var_dump($fb->getResponse());

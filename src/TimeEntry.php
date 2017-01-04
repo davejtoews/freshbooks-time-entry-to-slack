@@ -23,7 +23,7 @@ class TimeEntry {
 
 	public function getSlackString() {
 		$output = 	$this->date . "\n";
-		$output .= 	"*" . $this->project->name . "* _" . $this->hours . "_\n";
+		$output .= 	"*" . $this->project->name . "* _" . $this->hours . " hours_\n";
 		$output .= $this->notes;
 		return $output;
 	}
