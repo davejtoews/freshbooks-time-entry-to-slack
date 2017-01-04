@@ -39,6 +39,10 @@ class FreshbooksEvent {
 		return $output; 
 	}
 
+	public function shouldPostToSlack() {
+		return $this->service->shouldPostToSlack();
+	}
+
 	private function getTimeEntry($object_id) {
 		$fb = $this->fb;
 
@@ -83,32 +87,6 @@ class FreshbooksEvent {
 		} else {
 	 		echo $fb->getError();
 		    var_dump($fb->getResponse());
-		}	
-	}
-
-	private function isClientProject($project_id) {
-		$fb = $this->fb;
-		$conf = $this->conf;
-
-		$fb->setMethod('project.get');
-		$fb->post(array(
-		    'project_id' => $project_id
-		));
-
-		$fb->request();
-
-		if($fb->success()) {
-			$project = $fb->getResponse()['project'];
-			return true;
-			//if ($project['client_id'] == $conf->get('freshbooks.client_id')) {
-			//	return true;
-			//} else {
-			//	return false;
-			//}
-		} else {
-	 		echo $fb->getError();
-		    var_dump($fb->getResponse());
-		    return false;
 		}	
 	}
 }

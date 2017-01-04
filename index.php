@@ -16,8 +16,12 @@
 			$freshbooks_event = new FreshbooksToSlack\FreshbooksEvent($_POST['name'], $_POST['object_id']);
 			$slack_client = new FreshbooksToSlack\SlackClient();
 
-			$slack_client->send($freshbooks_event->getSlackString());
-			echo "Posted to Slack\n";
+			if ($freshbooks_event->shouldPostToSlack()) {
+				$slack_client->send($freshbooks_event->getSlackString());
+				echo "Posted to Slack\n";
+			} else {
+				echo "Not posted to Slack\n";
+			}
 		}
 
 		$conf = new Config('config.json');

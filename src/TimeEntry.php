@@ -2,6 +2,8 @@
 
 namespace DaveJToews\FreshbooksToSlack;
 
+use Noodlehaus\Config;
+
 class TimeEntry {
 
 	public $project_id;
@@ -10,7 +12,10 @@ class TimeEntry {
 	public $hours;
 	public $notes;
 
+	private $conf;
+
 	public function __construct($api_array) {
+		$this->conf = new Config('config.json');
 		$this->date = $api_array['date'];
 		$this->hours = $api_array['hours'];
 		$this->notes = $api_array['notes'];
@@ -26,6 +31,20 @@ class TimeEntry {
 		$output .= 	"*" . $this->project->name . "* _" . $this->hours . " hours_\n";
 		$output .= $this->notes;
 		return $output;
+	}
+
+	public function shouldPostToSlack() {
+		return $this->isClientProject();
+	}
+
+	private function isClientProject() {
+		$conf = $this->conf;
+
+		if ($this->project->client_id == $conf->get('freshbooks.client_id')) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }
