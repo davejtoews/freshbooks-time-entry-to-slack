@@ -18,13 +18,13 @@
 
 			$slack_client->send($freshbooks_event->getSlackString());
 			echo "Posted to Slack\n";
+		}
 
-			$conf = new Config('config.json');
+		$conf = new Config('config.json');
 
-			if ($conf->get('freshbooks.post_log')) {
-				$output = date("Y.m.d h:i:sa") . "\n" . print_r($_POST, true);
-				file_put_contents("post_log.txt", $output, FILE_APPEND);
-			}
+		if ($conf->get('freshbooks.post_log')) {
+			$output = date("Y.m.d h:i:sa") . "\n" . print_r($_POST, true);
+			file_put_contents("post_log.txt", $output, FILE_APPEND);
 		}
 
 	} else {
