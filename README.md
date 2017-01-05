@@ -7,9 +7,17 @@ This repo was built for the specific use case where a single client/vendor of my
 * Freshbooks account
 * Slack team
 * Publically accessible web server
-    * PHP (tested on 7.0, but I see no reason it shouldn't run on 5.3+)
+    * PHP (tested on 7.0, but I see no reason it shouldn't run on 5.5+)
     * Composer
     * Webserver needs write permissions to repo root (specifically to create and modify a file named post.log).
+    
+## Composer dependencies
+
+* [rtconner/freshbooks-api](https://github.com/rtconner/freshbooks-api)
+* [maknz/slack](https://github.com/maknz/slack)
+* [hassankhan/config](https://github.com/hassankhan/config)
+
+Refer to these packages for further documentation.
     
 ## Installation / Configuration
 
