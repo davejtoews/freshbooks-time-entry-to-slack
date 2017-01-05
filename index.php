@@ -26,7 +26,7 @@
 
 		$conf = new Config('config.json');
 
-		if ($conf->get('freshbooks.post_log')) {
+		if ($_SERVER['REQUEST_METHOD'] === 'POST' && $conf->get('freshbooks.post_log')) {
 			$output = date("Y.m.d h:i:sa") . "\n" . print_r($_POST, true);
 			file_put_contents("post.log", $output, FILE_APPEND);
 		}
