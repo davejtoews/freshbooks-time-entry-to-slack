@@ -22,7 +22,7 @@ This repo was built for the specific use case where a single client/vendor of my
         1. **token**: You can create a Freshbooks API auth token in the My Account section of your Freshbooks site.
         1. **client_id**: This is the Freshbooks API id for the client you wish to post time entries for. You may not know this to begin with. You can retrieve this yourself using the Freshbooks API, or you can use the **list_clients** setting to discover this information as described below.
         1. **list_clients**: If this is set to true and the domain and token are properly configured, browsing to http://[path-to-repo-install]/clients.php, will display a list of your Freshbooks clients along with their API ids. Use this to discover the proper id for the step above.
-        1. **post_log**: If this is set to true, all incoming post data will be logged in a post.log file in the repo root. For proper functionality, ensure that the webserver has write permissions do this directory/file. You may need to use this to validate your Freshbooks Webhook.
+        1. **post_log**: If this is set to true, all incoming post data will be logged in a post.log file in the repo root. For proper functionality, ensure that the webserver has write permissions to this directory/file. You may need to use this to validate your Freshbooks Webhook.
     1. Slack
         1. **webhook**: Create an incoming webhook by following [this link](https://my.slack.com/services/new/incoming-webhook/), and selecting the team and channel you wish to post to. Slack will provide you with a url, which you can paste to this config.
 1. Create and verify a Freshbooks webhook. 
