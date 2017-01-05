@@ -3,4 +3,4 @@
 /vendor/*
 
 config.json
-post_log.txt
+post.log

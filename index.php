@@ -28,7 +28,7 @@
 
 		if ($conf->get('freshbooks.post_log')) {
 			$output = date("Y.m.d h:i:sa") . "\n" . print_r($_POST, true);
-			file_put_contents("post_log.txt", $output, FILE_APPEND);
+			file_put_contents("post.log", $output, FILE_APPEND);
 		}
 
 	} else {
